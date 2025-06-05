@@ -7,12 +7,13 @@ main :: proc() {
 	max_found := 0
 	for i in 1 ..< 1000 {
 		for j in 1 ..= i {
-			if i * j > max_found && is_palindrome(cast(i64)(i * j)) {
-				max_found = i * j
+			prod := i * j
+			if prod > max_found && is_palindrome(cast(i64)prod) {
+				max_found = prod
 			}
 		}
 	}
-  util.answer(max_found)
+	util.answer(max_found)
 }
 
 is_palindrome :: proc(n: i64) -> bool {
