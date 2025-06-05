@@ -6,7 +6,7 @@ import "core:fmt"
 main :: proc() {
 	max_found := 0
 	for i in 1 ..< 1000 {
-		for j in 1 ..< 1000 {
+		for j in 1 ..= i {
 			if i * j > max_found && is_palindrome(cast(i64)(i * j)) {
 				max_found = i * j
 			}
