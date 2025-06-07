@@ -38,3 +38,10 @@ primes_get_next :: proc() {
 
 	append(&primes, candidate)
 }
+
+primes_get_to_at_least :: proc(n: i64) {
+  if len(primes) == 0 { primes_init() }
+  for primes[len(primes) - 1] < n {
+    primes_get_next()
+  }
+}
