@@ -4,7 +4,7 @@ import "core:fmt"
 import "core:math"
 
 answer :: proc(x: int) {
-  fmt.println("Answer:", x)
+	fmt.println("Answer:", x)
 }
 
 primes: [dynamic]i64
@@ -40,8 +40,8 @@ primes_get_next :: proc() {
 }
 
 primes_get_to_at_least :: proc(n: i64) {
-  if len(primes) == 0 { primes_init() }
-  for primes[len(primes) - 1] < n {
-    primes_get_next()
-  }
+	if len(primes) == 0 {primes_init()}
+	for primes[len(primes) - 1] < n {
+		primes_get_next()
+	}
 }
