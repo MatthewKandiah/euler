@@ -11,7 +11,6 @@ main :: proc() {
 	count := 0
 	for i in START ..= TARGET {
 		str := int_to_string(i)
-		fmt.println(str)
 		count += len(str)
 	}
 	util.answer(count)
@@ -19,8 +18,6 @@ main :: proc() {
 
 int_to_string :: proc(i: int) -> string {
 	switch i {
-	case 1001 ..= max(int):
-		panic("unsupported large int")
 	case 1 ..= 9:
 		return single_digit(i)
 	case 10 ..= 99:
@@ -81,21 +78,21 @@ two_digit :: proc(i: int) -> string {
 	case 19:
 		return "nineteen"
 	case 20 ..= 29:
-		return twenty_something(i)
+		return simple_two_digit("twenty", i - 20)
 	case 30 ..= 39:
-		return thirty_something(i)
+		return simple_two_digit("thirty", i - 30)
 	case 40 ..= 49:
-		return forty_something(i)
+		return simple_two_digit("forty", i - 40)
 	case 50 ..= 59:
-		return fifty_something(i)
+		return simple_two_digit("fifty", i - 50)
 	case 60 ..= 69:
-		return sixty_something(i)
+		return simple_two_digit("sixty", i - 60)
 	case 70 ..= 79:
-		return seventy_something(i)
+		return simple_two_digit("seventy", i - 70)
 	case 80 ..= 89:
-		return eighty_something(i)
+		return simple_two_digit("eighty", i - 80)
 	case 90 ..= 99:
-		return ninety_something(i)
+		return simple_two_digit("ninety", i - 90)
 	case:
 		unreachable()
 	}
@@ -103,38 +100,6 @@ two_digit :: proc(i: int) -> string {
 	simple_two_digit :: proc(prefix: string, digit: int) -> string {
 		if digit == 0 {return prefix}
 		return strings.concatenate({prefix, single_digit(digit)})
-	}
-
-	twenty_something :: proc(i: int) -> string {
-		return simple_two_digit("twenty", i - 20)
-	}
-
-	thirty_something :: proc(i: int) -> string {
-		return simple_two_digit("thirty", i - 30)
-	}
-
-	forty_something :: proc(i: int) -> string {
-		return simple_two_digit("forty", i - 40)
-	}
-
-	fifty_something :: proc(i: int) -> string {
-		return simple_two_digit("fifty", i - 50)
-	}
-
-	sixty_something :: proc(i: int) -> string {
-		return simple_two_digit("sixty", i - 60)
-	}
-
-	seventy_something :: proc(i: int) -> string {
-		return simple_two_digit("seventy", i - 70)
-	}
-
-	eighty_something :: proc(i: int) -> string {
-		return simple_two_digit("eighty", i - 80)
-	}
-
-	ninety_something :: proc(i: int) -> string {
-		return simple_two_digit("ninety", i - 90)
 	}
 }
 
