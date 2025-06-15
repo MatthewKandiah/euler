@@ -8,11 +8,11 @@ import "core:fmt"
 */
 TARGET :: 1000
 main :: proc() {
-	res := 0
-	for i in 0 ..< TARGET {
-		if i % 3 == 0 || i % 5 == 0 {
-			res += i
-		}
-	}
-	util.answer(res)
+  res := 0
+  for i in 0 ..< TARGET {
+    if i % 3 == 0 || i % 5 == 0 {
+      res += i
+    }
+  }
+  util.answer(res)
 }

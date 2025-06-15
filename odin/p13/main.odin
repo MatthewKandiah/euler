@@ -17,27 +17,27 @@ full_numbers: [dynamic]string
 */
 
 main :: proc() {
-	read_input()
+  read_input()
 
-	result := 0
-	for number in full_numbers {
-		i, ok := strconv.parse_int(number[0:12])
-		if !ok {panic("failed to parse int from string")}
-		result += i
-	}
+  result := 0
+  for number in full_numbers {
+    i, ok := strconv.parse_int(number[0:12])
+    if !ok {panic("failed to parse int from string")}
+    result += i
+  }
 
-	for result > 10_000_000_000 {
-		result /= 10
-	}
-	util.answer(result)
+  for result > 10_000_000_000 {
+    result /= 10
+  }
+  util.answer(result)
 }
 
 read_input :: proc() {
-	data, ok := os.read_entire_file(DATA_PATH)
-	if !ok {panic("failed to read input from file")}
+  data, ok := os.read_entire_file(DATA_PATH)
+  if !ok {panic("failed to read input from file")}
 
-	it := string(data)
-	for line in strings.split_lines_iterator(&it) {
-		append(&full_numbers, line)
-	}
+  it := string(data)
+  for line in strings.split_lines_iterator(&it) {
+    append(&full_numbers, line)
+  }
 }
