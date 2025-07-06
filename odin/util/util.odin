@@ -2,6 +2,9 @@ package util
 
 import "core:fmt"
 import "core:math"
+import "core:os"
+import "core:strconv"
+import "core:strings"
 
 answer :: proc(x: int) {
   fmt.println("Answer:", x)
@@ -44,4 +47,25 @@ primes_get_to_at_least :: proc(n: i64) {
   for primes[len(primes) - 1] < n {
     primes_get_next()
   }
+}
+
+read_lines_from_file :: proc(path: string) -> (out: [dynamic]string) {
+  data, ok := os.read_entire_file(path)
+  if !ok {panic("failed to read input from file")}
+
+  it := string(data)
+  for line in strings.split_lines_iterator(&it) {
+    append(&out, line)
+  }
+
+  return
+}
+
+split_line_to_ints :: proc(line: string) -> (out: [dynamic]int) {
+  line := line
+  for x in strings.split_iterator(&line, " ") {
+    n := strconv.atoi(x)
+    append(&out, n)
+  }
+  return
 }
