@@ -49,6 +49,14 @@ primes_get_to_at_least :: proc(n: i64) {
   }
 }
 
+primes_is_prime :: proc(n: i64) -> bool {
+    primes_get_to_at_least(n)
+    for p in primes {
+	if p == n { return true }
+    }
+    return false
+}
+
 read_lines_from_file :: proc(path: string) -> (out: [dynamic]string) {
   data, ok := os.read_entire_file(path)
   if !ok {panic("failed to read input from file")}
